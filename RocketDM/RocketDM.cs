@@ -21,24 +21,56 @@
 using System;
 using System.Collections.Generic;
 using Rocket.RocketAPI;
+using Rocket.RocketAPI.Events;
+using SDG;
+using Steamworks;
+using UnityEngine;
+using FC.Subspace;
+using subSpace = FC.Subspace.Subspace;
 
 namespace FC.RocketDM
 {
 
-	public class RocketDM : RocketPlugin
+	public class RocketDM : SubspaceRocketPlugin
 	{
 		
 		Dictionary<string, List<RocketPlayer>> teamRegistry; //Store the teams and a list of players on said team.
 		
-		
-		
-		
 		protected override void Load()
 		{
 			teamRegistry = new Dictionary<string, List<RocketPlayer>>();
+			
+			subSpace.CreateChannel("rocketdm", subSpace.GetUnusedChannel());
+			subSpace.SubscribeToChannel(subSpace.GetChannelFromName("rocketdm"), this);
+			
+			RocketPlayerEvents.OnPlayerRevive += OnPlayerRespawn;
+			RocketPlayerEvents.OnPlayerDeath += OnPlayerDeath;
+			
+			RocketServerEvents.OnPlayerConnected += OnPlayerConnect;
+			
 		}
 		
 		public void FixedUpdate()
+		{
+			
+		}
+		
+		public override void ReceiveMessage(SubspaceMessage _message)
+		{
+			
+		}
+		
+		private void OnPlayerRespawn(RocketPlayer _player, Vector3 position, byte angle)
+		{
+			
+		}
+		
+		private void OnPlayerConnect(RocketPlayer _rPlayer)
+		{
+			
+		}
+		
+		private void OnPlayerDeath(RocketPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
 		{
 			
 		}

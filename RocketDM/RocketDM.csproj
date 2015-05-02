@@ -43,6 +43,9 @@
     <Reference Include="RocketAPI">
       <HintPath>C:\Users\Dev\Documents\Dev Libs\Rocket\RocketAPI.dll</HintPath>
     </Reference>
+    <Reference Include="Subspace-0.3.0-beta">
+      <HintPath>..\..\Subspace\Subspace\bin\Debug\Subspace-0.3.0-beta.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -57,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DMCommand.cs" />
+    <Compile Include="DMMatch.cs" />
     <Compile Include="DMPlayer.cs" />
     <Compile Include="RocketDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
