@@ -31,6 +31,7 @@ namespace RocketDM
 		string pClanTag;
 		int pkills;
 		int pTeamKills;
+		int pDeaths;
 		int pScore;
 		
 		public DMPlayer(RocketPlayer _rPlayer)
@@ -77,6 +78,11 @@ namespace RocketDM
 			return pTeamKills;
 		}
 		
+		public int GetDeaths()
+		{
+			return pDeaths;
+		}
+		
 		public int GetScore()
 		{
 			return pScore;
@@ -109,6 +115,11 @@ namespace RocketDM
 		public void SetTeamKills(int _teamKills)
 		{
 			pTeamKills = _teamKills;
+		}
+		
+		public void SetDeaths(int _deaths)
+		{
+			pDeaths = _deaths;
 		}
 		
 		public void SetScore(int _score)
@@ -160,6 +171,25 @@ namespace RocketDM
 			pTeamKills = pTeamKills - _teamKillsDecrease;
 		}
 		
+		public void IncrementDeaths()
+		{
+			pDeaths+=1;
+		}
+		
+		public void DecrementDeaths()
+		{
+			pDeaths-=1;
+		}
+		
+		public void IncreaseDeaths(int _deathsIncrease)
+		{
+			pDeaths = pDeaths + _deathsIncrease;
+		}
+		
+		public void DecreaseDeaths(int _deathsDecrease)
+		{
+			pDeaths = pDeaths - _deathsDecrease;
+		}
 		public void IncrementScore()
 		{
 			pScore+=1;

@@ -1,5 +1,5 @@
 ﻿ /*****
- * -- DMMatch -- 
+ * -- <TITLE&DESCRIPTION> -- 
  *
  * Copyright (C) 2015 False_Chicken
  * Contact: jmdevsupport@gmail.com
@@ -17,31 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, Get it here: https://www.gnu.org/licenses/gpl-2.0.html
  *****/
- 
 using System;
-using System.Collections.Generic;
 
 namespace RocketDM
 {
-	public class DMMatch
+	public static class DMSubspaceMessageCodes
 	{
-		string dmMatchTitle;
-		
-		int dmMatchTimeLimitSeconds;
-		int dmTimeRemainingSeconds;
-		int dmKillLimit;
-		
-		bool dmTeamPlayEnabled;
-		bool dmFriendlyFireEnabled;
-		bool dmTimeLimitEnabled;
-		bool dmKillLimitEnabled;
-		bool dmMatchLive;
-		
-		List<DMTeam> dmActiveTeamList;
-		
-		public DMMatch()
-		{
+		public static readonly int 
+			TEAM_NAME_CHANGE = 0,
+			PLAYER_KILLED = 1
+			;
 			
-		}
+			
 	}
 }

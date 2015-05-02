@@ -19,13 +19,13 @@
  *****/
  
 using System;
-using System.Collections.Generic;
 using Rocket.RocketAPI;
 using Rocket.RocketAPI.Events;
 using SDG;
 using Steamworks;
 using UnityEngine;
 using FC.Subspace;
+using fc.logman;
 using subSpace = FC.Subspace.Subspace;
 
 namespace FC.RocketDM
@@ -33,13 +33,10 @@ namespace FC.RocketDM
 
 	public class RocketDM : SubspaceRocketPlugin
 	{
-		
-		Dictionary<string, List<RocketPlayer>> teamRegistry; //Store the teams and a list of players on said team.
+		LogMan logMan = new LogMan();
 		
 		protected override void Load()
 		{
-			teamRegistry = new Dictionary<string, List<RocketPlayer>>();
-			
 			subSpace.CreateChannel("rocketdm", subSpace.GetUnusedChannel());
 			subSpace.SubscribeToChannel(subSpace.GetChannelFromName("rocketdm"), this);
 			
