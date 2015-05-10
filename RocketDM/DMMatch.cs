@@ -20,28 +20,47 @@
  
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace RocketDM
+namespace FC.RocketDM
 {
 	public class DMMatch
 	{
 		string dmMatchTitle;
 		
-		int dmMatchTimeLimitSeconds;
-		int dmTimeRemainingSeconds;
-		int dmKillLimit;
+		public int dmMatchTimeLimitSeconds;
+		public int dmTimeRemainingSeconds;
+		public int dmKillLimit;
+		public Vector3 dmMatchLocation;
 		
-		bool dmTeamPlayEnabled;
-		bool dmFriendlyFireEnabled;
-		bool dmTimeLimitEnabled;
-		bool dmKillLimitEnabled;
-		bool dmMatchLive;
+		public List<Vector3> dmMatchSpawnPoints;
 		
-		List<DMTeam> dmActiveTeamList;
+		public bool dmTeamPlayEnabled;
+		public bool dmFriendlyFireEnabled;
+		public bool dmTimeLimitEnabled;
+		public bool dmKillLimitEnabled;
+		public bool dmMatchLive;
+		public bool dmHardcoreModeEnabled;
 		
-		public DMMatch()
+		public List<DMTeam> dmActiveTeamList;
+		
+		public DMMatch(string _matchTitle)
 		{
-			
+			dmMatchTitle = _matchTitle;
 		}
+		
+		#region PUBLIC METHODS
+		
+		public void SetMatchLocation(Vector3 _location)
+		{
+			dmMatchLocation = _location;
+		}
+		
+		
+		#region SETTERS
+		
+		
+		#endregion
+		
 	}
 }

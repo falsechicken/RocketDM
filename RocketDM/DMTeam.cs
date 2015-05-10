@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using FC.Subspace;
 using subSpace = FC.Subspace.Subspace;
 
-namespace RocketDM
+namespace FC.RocketDM
 {
 	public class DMTeam
 	{

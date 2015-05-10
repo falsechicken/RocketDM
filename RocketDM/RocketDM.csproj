@@ -37,17 +37,14 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>C:\Users\Dev\Documents\Dev Libs\Rocket\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="LogMan-v0.6.0">
-      <HintPath>..\..\LogMan\LogMan\bin\Debug\LogMan-v0.6.0.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="RocketAPI">
       <HintPath>C:\Users\Dev\Documents\Dev Libs\Rocket\RocketAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Subspace-0.3.1-beta">
-      <HintPath>..\..\Subspace\Subspace\bin\Debug\Subspace-0.3.1-beta.dll</HintPath>
+    <Reference Include="Subspace-0.4.5">
+      <HintPath>..\..\Subspace\Subspace\bin\Debug\Subspace-0.4.5.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -66,6 +63,7 @@
     <Compile Include="DMMatch.cs" />
     <Compile Include="DMPlayer.cs" />
     <Compile Include="DMSubspaceMessageCodes.cs" />
+    <Compile Include="DMSubspaceReceiver.cs" />
     <Compile Include="DMTeam.cs" />
     <Compile Include="RocketDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

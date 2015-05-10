@@ -1,5 +1,5 @@
 ﻿ /*****
- * -- <TITLE&DESCRIPTION> -- 
+ * -- <TITLE>  --
  *
  * Copyright (C) 2015 False_Chicken
  * Contact: jmdevsupport@gmail.com
@@ -17,15 +17,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, Get it here: https://www.gnu.org/licenses/gpl-2.0.html
  *****/
+
 using System;
+using FC.Subspace;
+using Rocket.RocketAPI;
+using Rocket.Logging;
+
+using subSpace = FC.Subspace.Subspace;
+using subspaceMessageCodes = FC.RocketDM.DMSubspaceMessageCodes;
 
 namespace FC.RocketDM
 {
-	public static class DMSubspaceMessageCodes
+	public class DMSubspaceReceiver : SubspaceReceiver
 	{
-		public static readonly ushort 
-			TEAM_NAME_CHANGE = 0,
-			PLAYER_KILLED = 1
-			;
+		RocketDM parent;
+		
+		public DMSubspaceReceiver(string _receiverID, RocketDM _parent) : base(_receiverID)
+		{
+			parent = _parent;
+		}
+		
+		public override void ReceiveMessage(SubspaceMessage _message)
+		{
+			Logger.Log(receiverID + " has received message " + _message.GetTitle());
+		}
 	}
 }

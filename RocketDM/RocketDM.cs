@@ -25,24 +25,33 @@ using SDG;
 using Steamworks;
 using UnityEngine;
 using FC.Subspace;
-using fc.logman;
 using subSpace = FC.Subspace.Subspace;
 
 namespace FC.RocketDM
 {
 
-	public class RocketDM : SubspaceRocketPlugin
+	public class RocketDM : RocketPlugin
 	{
-		LogMan logMan = new LogMan();
+		
+		private DMSubspaceReceiver sReceiver;
+		
+		private ushort rdmSubspaceEventChannel;
 		
 		protected override void Load()
 		{
-			subSpace.CreateChannel("rocketdm", subSpace.GetUnusedChannel());
-			subSpace.SubscribeToChannel(subSpace.GetChannelFromName("rocketdm"), this);
+			
+			subSpace.SetDebugMode(true);
+			
+			sReceiver = new DMSubspaceReceiver("rdmReceiver", this);
+			
+			rdmSubspaceEventChannel = subSpace.GetUnusedChannel();
+			
+			subSpace.CreateChannel("rocketdm", rdmSubspaceEventChannel);
+			
+			subSpace.SubscribeToChannel(rdmSubspaceEventChannel, sReceiver);
 			
 			RocketPlayerEvents.OnPlayerRevive += OnPlayerRespawn;
 			RocketPlayerEvents.OnPlayerDeath += OnPlayerDeath;
-			
 			RocketServerEvents.OnPlayerConnected += OnPlayerConnect;
 			
 		}
@@ -52,10 +61,7 @@ namespace FC.RocketDM
 			
 		}
 		
-		public override void ReceiveMessage(SubspaceMessage _message)
-		{
-			
-		}
+		#region EVENT HANDLERS
 		
 		private void OnPlayerRespawn(RocketPlayer _player, Vector3 position, byte angle)
 		{
@@ -67,9 +73,37 @@ namespace FC.RocketDM
 			
 		}
 		
-		private void OnPlayerDeath(RocketPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
+		private void OnPlayerDeath(RocketPlayer _player, EDeathCause _cause, ELimb _limb, CSteamID _murderer)
 		{
+			var deathMessage = CreateDeathSubspaceMessage(_player, _cause, _limb, _murderer);
 			
+			subSpace.SendSubspaceMessage(SubspaceReservedChannels.STATS, deathMessage);
+			                            
+			subSpace.SendSubspaceMessage(rdmSubspaceEventChannel, deathMessage);
 		}
+		
+		private bool WasDeathAMurder(EDeathCause _cause, CSteamID _murderer)
+		{
+			if (RocketPlayer.FromCSteamID(_murderer) == null) //He we have no murdering player then it was not a kill.
+				return false;
+			
+			return true;
+		}
+		
+		private SubspaceMessage CreateDeathSubspaceMessage(RocketPlayer _player, EDeathCause _cause, ELimb _limb, CSteamID _murderer)
+		{
+			var deathMessage = new SubspaceMessage("rdmDeathEvent");
+			
+			deathMessage.SetMessageCode(DMSubspaceMessageCodes.PLAYER_KILLED);
+			deathMessage.AddToPlayerList(_player);
+			deathMessage.AddToPlayerList(RocketPlayer.FromCSteamID(_murderer));
+			deathMessage.AddToInstructionList(_cause.ToString());
+			deathMessage.SetBoolean(WasDeathAMurder(_cause, _murderer)); //If the death was a murder or not.
+			
+			return deathMessage;
+		
+		}
+		#endregion
+		
 	}
 }

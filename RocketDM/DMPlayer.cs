@@ -20,7 +20,7 @@
 using System;
 using Rocket.RocketAPI;
 
-namespace RocketDM
+namespace FC.RocketDM
 {
 	public class DMPlayer
 	{

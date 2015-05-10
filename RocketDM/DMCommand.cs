@@ -19,6 +19,9 @@
  *****/
 using System;
 using Rocket.RocketAPI;
+using Rocket.Logging;
+using FC.Subspace;
+using subSpace = FC.Subspace.Subspace;
 
 namespace FC.RocketDM
 {
@@ -31,17 +34,45 @@ namespace FC.RocketDM
 
         public string Name
         {
-            get { return "dm"; }
+            get { return "rdm"; }
         }
 
         public string Help
         {
-            get { return "Root DM Command.";}
+            get { return "Root RDM Command.";}
         }
 
         public void Execute(RocketPlayer caller, string command)
         {
+        	string[] cmds = command.Split(null);
+        	
+        	bool isServer;
+        	
+        	bool isAdmin;
+        	
+        	string charName;
+        	
+        	try { charName = caller.CharacterName; isServer = false; isAdmin = caller.IsAdmin; } //Mainly to fix exceptions when user is typing commands from the server console.
+        	catch (NullReferenceException n) { charName = "Server"; isServer = true; isAdmin = true; }
+        	
+        	if (cmds[0].ToLower().Equals("match") && isAdmin) { 
+        		ProcessMatchCommand(caller, cmds);
+        		return;
+        	}
             
+        }
+        
+        private void ProcessMatchCommand(RocketPlayer _caller, string[] _cmds)
+        {
+        	var matchMessage = new SubspaceMessage("rdmMatchCommand");
+        	
+        	subSpace.SendSubspaceMessage(subSpace.GetChannelFromName("rocketdm"), matchMessage);
+        	subSpace.SendSubspaceMessage(SubspaceReservedChannels.STATS, matchMessage);
+        }
+        
+        private void ProcessStartCommand(RocketPlayer _caller, string[] _cmds)
+        {
+        	
         }
     }
 }
