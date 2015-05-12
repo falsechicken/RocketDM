@@ -3,11 +3,9 @@
 Allows deathmatch games to be played in Unturned.
 
 
-- Depends on the Subspace and LogMan libraries -
+- Depends on the Subspace library -
 
 https://github.com/falsechicken/Subspace
-
-https://github.com/falsechicken/LogMan-Rocket
 
 -
 

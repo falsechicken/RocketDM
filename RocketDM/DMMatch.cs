@@ -56,6 +56,7 @@ namespace FC.RocketDM
 			dmMatchLocation = _location;
 		}
 		
+		#endregion
 		
 		#region SETTERS
 		

@@ -42,9 +42,8 @@ namespace FC.RocketDM
             get { return "Root RDM Command.";}
         }
 
-        public void Execute(RocketPlayer caller, string command)
+        public void Execute(RocketPlayer caller, string[] cmds)
         {
-        	string[] cmds = command.Split(null);
         	
         	bool isServer;
         	
