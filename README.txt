@@ -2,12 +2,12 @@
 
 Allows deathmatch games to be played in Unturned.
 
+This is a rough sleep deprived prototype. I do not recommend anyone use this branch.
 
-- Depends on the Subspace and LogMan libraries -
+
+- Depends on the Subspace library -
 
 https://github.com/falsechicken/Subspace
-
-https://github.com/falsechicken/LogMan-Rocket
 
 -
 
