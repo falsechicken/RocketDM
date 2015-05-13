@@ -37,6 +37,10 @@ namespace FC.RocketDM
 		
 		private ushort rdmSubspaceEventChannel;
 		
+		public static readonly System.Random random = new System.Random();
+		
+		public static LogHelper logHelper = new LogHelper("RocketDM");
+		
 		protected override void Load()
 		{
 			

@@ -1,5 +1,5 @@
 ﻿ /*****
- * -- <TITLE&DESCRIPTION> -- 
+ * -- DMSubspaceMessageCodes: Contains the message codes for Subspace Messages originating from RocketDM. --
  *
  * Copyright (C) 2015 False_Chicken
  * Contact: jmdevsupport@gmail.com
@@ -23,7 +23,7 @@ namespace FC.RocketDM
 {
 	public static class DMSubspaceMessageCodes
 	{
-		public static readonly ushort 
+		public static readonly byte 
 			TEAM_NAME_CHANGE = 0,
 			PLAYER_KILLED = 1
 			;

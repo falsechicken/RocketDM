@@ -63,10 +63,7 @@ namespace FC.RocketDM
         
         private void ProcessMatchCommand(RocketPlayer _caller, string[] _cmds)
         {
-        	var matchMessage = new SubspaceMessage("rdmMatchCommand");
-        	
-        	subSpace.SendSubspaceMessage(subSpace.GetChannelFromName("rocketdm"), matchMessage);
-        	subSpace.SendSubspaceMessage(SubspaceReservedChannels.STATS, matchMessage);
+
         }
         
         private void ProcessStartCommand(RocketPlayer _caller, string[] _cmds)
