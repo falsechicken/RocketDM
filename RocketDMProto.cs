@@ -117,14 +117,16 @@ namespace FC.RocketDMProto
 			if (isGameRunning == false)
 				return;
 			
+			if (scoreTable.ContainsKey(player.CSteamID.m_SteamID) == false)
+				return;
+			
+			player.Inventory.Clear(); //Clear inventory if the player is in the game. To prevent loot build-up and crashes.
+			
 			if (WasKillAMurder(murderer) == false)
 				return;
 			
 			if (WasDeathASuicide(player, murderer))
 			    return;
-			
-			if (scoreTable.ContainsKey(player.CSteamID.m_SteamID) == false)
-				return;
 			
 			if (scoreTable.ContainsKey(killer.CSteamID.m_SteamID) == false)
 			{
