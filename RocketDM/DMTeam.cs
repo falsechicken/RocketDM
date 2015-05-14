@@ -30,7 +30,7 @@ namespace FC.RocketDM
 		string dmTeamName;
 		
 		int dmTotalTeamKills;
-		int dmTotalTeamDeaths;
+		int  dmTotalTeamDeaths;
 		
 		List<string> dmRivalTeams;
 		
@@ -107,7 +107,7 @@ namespace FC.RocketDM
 		
 		public void DecreaseTeamKills(int _teamKillDecrease)
 		{
-			dmTotalTeamKills = dmTotalTeamKills = _teamKillDecrease;
+			dmTotalTeamKills = dmTotalTeamKills - _teamKillDecrease;
 		}
 		
 		public void IncrementTeamDeaths()
@@ -162,6 +162,11 @@ namespace FC.RocketDM
 		public List<DMPlayer> GetTeamMembers()
 		{
 			return dmTeamMembers;
+		}
+		
+		public int GetTeamMemberCount()
+		{
+			return dmTeamMembers.Count;
 		}
 		
 		#endregion

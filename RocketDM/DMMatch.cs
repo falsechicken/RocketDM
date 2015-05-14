@@ -188,6 +188,11 @@ namespace FC.RocketDM
 			return false;
 		}
 		
+		public void SetMatchLocation(Vector3 _matchLocation)
+		{
+			dmMatchLocation = _matchLocation;
+		}
+		
 		#endregion
 		
 		
